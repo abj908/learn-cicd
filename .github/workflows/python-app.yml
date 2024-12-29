@@ -3,7 +3,10 @@ name: Python CI/CD
 on:
   push:
     branches:
-      - main  # Run pipeline on pushes to 'main' branch
+      - main  # This triggers the workflow on pushes to 'main'
+  pull_request:
+    branches:
+      - main  # This triggers the workflow on PRs to 'main'
 
 jobs:
   test:
@@ -18,5 +21,5 @@ jobs:
       with:
         python-version: '3.9'
 
-    - name: Run tests
-      run: python -m unittest discover
+    - name: Install dependencies
+      run: pip install -r requirements.txt
